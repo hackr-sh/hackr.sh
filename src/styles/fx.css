@@ -1,0 +1,6 @@
+.gradient-blur {
+  mask: linear-gradient(to top,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 50%);
+  z-index: 0;
+}
