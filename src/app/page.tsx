@@ -63,22 +63,7 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="
-        min-h-screen 
-        2xl:max-w-[1200px]
-        xl:max-w-[800px] 
-        lg:max-w-[800px] 
-        md:max-w-[600px] 
-        sm:max-w-[400px]
-        max-w-full
-        text-white 
-        flex 
-        flex-col 
-        justify-center 
-        items-center
-        p-4
-        py-40
-      ">
+      <main>
         <GridPattern
           strokeDasharray="4 2"
           className={cn("[mask-image:radial-gradient(60vw_circle_at_center,white,transparent)]") + " fixed"}
@@ -97,7 +82,7 @@ export default async function Home() {
             <BlurFade delay={0.3}>
               <HyperText
                 className="
-                  text-slate-400
+                  text-slate-200
                   text-xs md:text-sm lg:text-base
                 "
                 text={`I'm a software engineer with ${Math.floor((Date.now() - 1514764800000) / 1000 / 60 / 60 / 24 / 365.25)} years of experience, primarily in the fields of web and mobile development.`}
@@ -106,7 +91,7 @@ export default async function Home() {
             <BlurFade delay={0.6}>
               <HyperText
                 className="
-                  text-slate-400
+                  text-slate-200
                   text-xs md:text-sm lg:text-base
                 "
                 text="Here's a couple of things I'm currently working on:"
