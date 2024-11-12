@@ -7,6 +7,8 @@ import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { Navbar } from "./_components/navbar";
+import { CommandDialogDemo } from "./_components/cmdk";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Mohammad Al-Ahdal",
@@ -19,10 +21,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable} dark`}>
-      <body className="bg-[#0A2239] flex flex-column items-center justify-center">
-        <Navbar />
-        <TRPCReactProvider>{children}</TRPCReactProvider>
-      </body>
+      <SessionProvider>
+        <body className="bg-[#0A2239] flex flex-column items-center justify-center">
+          <Navbar />
+          <CommandDialogDemo />
+          <TRPCReactProvider>{children}</TRPCReactProvider>
+        </body>
+      </SessionProvider>
     </html>
   );
 }

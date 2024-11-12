@@ -1,23 +1,23 @@
 "use client";
 
-import { GithubIcon, Linkedin01Icon, TwitterIcon, Menu01Icon, Cancel01Icon } from "hugeicons-react";
+import { GithubIcon, Linkedin01Icon, TwitterIcon, Menu01Icon, Cancel01Icon, Home01Icon, NerdIcon, PencilEdit01Icon, PenTool03Icon } from "hugeicons-react";
 import Link from "next/link";
 import { useState } from "react";
 import BlurFade from "~/components/ui/blur-fade";
 import { Button } from "~/components/ui/button";
 
+export const links = [
+  { Icon: <Home01Icon />, href: "/", name: "Home" },
+  { Icon: <NerdIcon />, href: "/about", name: "About" },
+  { Icon: <PencilEdit01Icon />, href: "/contact", name: "Contact" },
+  { Icon: <PenTool03Icon />, href: "/blog", name: "Blog" },
+];
+export const externalLinks = [
+  { Icon: <GithubIcon />, href: "https://github.com/hackrmomo", name: "GitHub" },
+  { Icon: <Linkedin01Icon />, href: "https://www.linkedin.com/in/mohammadalahdal/", name: "LinkedIn" },
+  { Icon: <TwitterIcon />, href: "https://twitter.com/0xh4ckr", name: "Twitter" },
+];
 export const Navbar = () => {
-  const links = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-    { name: "Blog", href: "/blog" },
-  ];
-  const externalLinks = [
-    { Icon: <GithubIcon />, href: "https://github.com/hackrmomo" },
-    { Icon: <Linkedin01Icon />, href: "https://www.linkedin.com/in/mohammadalahdal/" },
-    { Icon: <TwitterIcon />, href: "https://twitter.com/0xh4ckr" },
-  ];
   const [isOpen, setIsOpen] = useState(false);
   return <>
     <nav className="fixed top-0 left-0 right-0 z-50">
