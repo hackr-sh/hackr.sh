@@ -2,14 +2,11 @@
 
 import { api } from "~/trpc/react";
 import { useSession } from "next-auth/react";
-import { useCreateBlockNote } from "@blocknote/react";
-import { BlockNoteEditor } from "~/app/_components/block-note-editor";
+import { BlockNoteEditor, type EditorSubmitProps } from "~/app/_components/block-note-editor";
 import { useEffect } from "react";
-import { type PartialBlock } from "@blocknote/core";
 import { useMounted } from "~/hooks/use-mounted";
 
 export default function NewBlog() {
-  const editor = useCreateBlockNote();
   const mounted = useMounted();
   const utils = api.useUtils();
   const createOrUpdate = api.blogPost.createOrUpdate.useMutation({
@@ -19,12 +16,12 @@ export default function NewBlog() {
       window.location.href = "/blog"; // for some reason redirect from next/navigation doesn't work
     }
   });
-  const save = async (data: PartialBlock[]) => {
+  const save = async (data: EditorSubmitProps) => {
     if (createOrUpdate.isPending) return;
     createOrUpdate.mutate({
-      title: await extractedTitle(data),
-      synopsis: await extractedBodySynopsis(data),
-      content: JSON.stringify(data)
+      title: data.title,
+      synopsis: data.synopsis,
+      content: JSON.stringify(data.content)
     });
   };
   
@@ -38,20 +35,6 @@ export default function NewBlog() {
   }, [status]);
 
   if (!mounted) return <></>;
-
-  const extractedTitle = async (data: PartialBlock[]) => {
-    if (window.document === undefined) return "";
-    const span = window.document.createElement("span");
-    span.innerHTML = await editor.blocksToFullHTML(data.slice(0, 1));
-    return span.textContent ?? span.innerText;
-  };
-
-  const extractedBodySynopsis = async (data: PartialBlock[]) => {
-    if (window.document === undefined) return "";
-    const span = window.document.createElement("span");
-    span.innerHTML = await editor.blocksToFullHTML(data.slice(1, 2));
-    return (span.textContent ?? span.innerText).substring(0, 200) + "...";
-  };
 
   return <>
     <main className="min-w-[80vw] flex flex-col gap-8">

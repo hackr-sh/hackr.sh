@@ -2,8 +2,7 @@
 
 import { api } from "~/trpc/react";
 import { useSession } from "next-auth/react";
-import { useCreateBlockNote } from "@blocknote/react";
-import { BlockNoteEditor } from "~/app/_components/block-note-editor";
+import { BlockNoteEditor, type EditorSubmitProps } from "~/app/_components/block-note-editor";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
@@ -13,7 +12,6 @@ import { useMounted } from "~/hooks/use-mounted";
 
 export default function EditBlog() {
   const mounted = useMounted();
-  const editor = useCreateBlockNote();
   const { id } = useParams();
   const utils = api.useUtils();
   const [validatedData, setValidatedData] = useState<PartialBlock[] | undefined>(undefined);
@@ -24,13 +22,13 @@ export default function EditBlog() {
     }
   });
   const getBlogPostById = api.blogPost.getDetail.useQuery({ id: id as string });
-  const save = async (data: PartialBlock[]) => {
+  const save = async (data: EditorSubmitProps) => {
     if (createOrUpdate.isPending) return;
     createOrUpdate.mutate({
       id: id as string,
-      title: await extractedTitle(data),
-      synopsis: await extractedBodySynopsis(data),
-      content: JSON.stringify(data)
+      title: data.title,
+      synopsis: data.synopsis,
+      content: JSON.stringify(data.content)
     });
   };
   const { status, data: session } = useSession();
@@ -49,22 +47,6 @@ export default function EditBlog() {
   }, [status]);
 
   if (!mounted) return <></>;
-
-  const extractedTitle = async (data: PartialBlock[]) => {
-    if (window.document === undefined) return "";
-    const span = window.document.createElement("span");
-    span.innerHTML = await editor.blocksToFullHTML(data.slice(0, 1));
-    return span.textContent ?? span.innerText;
-  };
-
-  const extractedBodySynopsis = async (data: PartialBlock[]) => {
-    if (window.document === undefined) return "";
-    const span = window.document.createElement("span");
-    span.innerHTML = await editor.blocksToFullHTML(data.slice(1, 2));
-    return (span.textContent ?? span.innerText).substring(0, 200) + "...";
-  };
-
-
 
   return <>
     <main className="min-w-[80vw] flex flex-col gap-8">
