@@ -1,8 +1,7 @@
 import BlurFade from "~/components/ui/blur-fade";
 import BlurIn from "~/components/ui/blur-in";
 import HyperText from "~/components/ui/hyper-text";
-import { auth } from "~/server/auth";
-import { api, HydrateClient } from "~/trpc/server";
+import { HydrateClient } from "~/trpc/server";
 import { ProfilePicture } from "./_components/pfp";
 import GridPattern from "~/components/ui/grid-pattern";
 import { cn } from "~/lib/utils";
@@ -12,11 +11,6 @@ import { StackIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 
 export default async function Home() {
-  const session = await auth();
-
-  if (session?.user) {
-    void api.blogPost.getLatest.prefetch();
-  }
 
   const bentoLinks = [
     {
@@ -75,27 +69,15 @@ export default async function Home() {
           <div>
             <BlurFade>
               <HyperText
-                className="text-xl md:text-2xl lg:text-4xl"
+                className="text-xl md:text-2xl lg:text-4xl font-bold"
                 text="Hey! I'm Mohammad Al-Ahdal"
               />
             </BlurFade>
-            <BlurFade delay={0.3}>
-              <HyperText
-                className="
-                  text-slate-200
-                  text-xs md:text-sm lg:text-base
-                "
-                text={`I'm a software engineer with ${Math.floor((Date.now() - 1514764800000) / 1000 / 60 / 60 / 24 / 365.25)} years of experience, primarily in the fields of web and mobile development.`}
-              />
+            <BlurFade delay={0.3} className="text-slate-300 text-xs md:text-sm lg:text-base">
+              {`I'm a software engineer with ${Math.floor((Date.now() - 1514764800000) / 1000 / 60 / 60 / 24 / 365.25)} years of experience, primarily in the fields of web and mobile development! I like messing around with new technologies and learning new things - almost to a fault.`}
             </BlurFade>
-            <BlurFade delay={0.6}>
-              <HyperText
-                className="
-                  text-slate-200
-                  text-xs md:text-sm lg:text-base
-                "
-                text="Here's a couple of things I'm currently working on:"
-              />
+            <BlurFade delay={0.6} className="text-slate-300 text-xs md:text-sm lg:text-base">
+              {"Here's a couple of things I'm currently working on:"}
             </BlurFade>
           </div>
         </div>

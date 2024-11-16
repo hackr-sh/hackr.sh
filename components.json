@@ -3,6 +3,15 @@
   "style": "new-york",
   "rsc": true,
   "tsx": true,
+  "registries": {
+    "plate": {
+      "style": "default",
+      "aliases": {
+        "ui": "@/components/plate-ui"
+      },
+      "url": "https://platejs.org/r"
+    }
+  },
   "tailwind": {
     "config": "tailwind.config.ts",
     "css": "src/styles/globals.css",

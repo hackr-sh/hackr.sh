@@ -1,6 +1,8 @@
 import "~/styles/globals.css";
 import "~/styles/fonts.css";
 import "~/styles/fx.css";
+import "@blocknote/core/fonts/inter.css";
+import "@blocknote/shadcn/style.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
