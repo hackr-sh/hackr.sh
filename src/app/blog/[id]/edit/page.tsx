@@ -9,8 +9,10 @@ import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
 import BlurFade from "~/components/ui/blur-fade";
 import { type PartialBlock } from "@blocknote/core";
+import { useMounted } from "~/hooks/use-mounted";
 
 export default function EditBlog() {
+  const mounted = useMounted();
   const editor = useCreateBlockNote();
   const { id } = useParams();
   const utils = api.useUtils();
@@ -31,6 +33,22 @@ export default function EditBlog() {
       content: JSON.stringify(data)
     });
   };
+  const { status, data: session } = useSession();
+  const isAuthorized = status === "authenticated" && session.user.email === "hackr@hackr.sh";
+
+  useEffect(() => {
+    if (!getBlogPostById.data) return;
+    const blocks = JSON.parse(getBlogPostById?.data?.content ?? "") as PartialBlock[];
+    setValidatedData(blocks);
+  }, [getBlogPostById.data]);
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      window.location.href = "/";
+    }
+  }, [status]);
+
+  if (!mounted) return <></>;
 
   const extractedTitle = async (data: PartialBlock[]) => {
     if (document === undefined) return "";
@@ -46,20 +64,7 @@ export default function EditBlog() {
     return (span.textContent ?? span.innerText).substring(0, 200) + "...";
   };
 
-  const { status, data: session } = useSession();
-  const isAuthorized = status === "authenticated" && session.user.email === "hackr@hackr.sh";
 
-  useEffect(() => {
-    if (!getBlogPostById.data) return;
-    const blocks = JSON.parse(getBlogPostById?.data?.content ?? "") as PartialBlock[];
-    setValidatedData(blocks);
-  }, [getBlogPostById.data]);
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      window.location.href = "/";
-    }
-  }, [status]);
 
   return <>
     <main className="min-w-[80vw] flex flex-col gap-8">

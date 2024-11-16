@@ -6,9 +6,11 @@ import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteEditor } from "~/app/_components/block-note-editor";
 import { useEffect } from "react";
 import { type PartialBlock } from "@blocknote/core";
+import { useMounted } from "~/hooks/use-mounted";
 
 export default function NewBlog() {
   const editor = useCreateBlockNote();
+  const mounted = useMounted();
   const utils = api.useUtils();
   const createOrUpdate = api.blogPost.createOrUpdate.useMutation({
     async onSuccess(data, variables, context) {
@@ -25,6 +27,17 @@ export default function NewBlog() {
       content: JSON.stringify(data)
     });
   };
+  
+  const { status, data: session } = useSession();
+  const isAuthorized = status === "authenticated" && session.user.email === "hackr@hackr.sh";
+  
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      window.location.href = "/";
+    }
+  }, [status]);
+
+  if (!mounted) return <></>;
 
   const extractedTitle = async (data: PartialBlock[]) => {
     if (document === undefined) return "";
@@ -39,15 +52,6 @@ export default function NewBlog() {
     span.innerHTML = await editor.blocksToFullHTML(data.slice(1, 2));
     return (span.textContent ?? span.innerText).substring(0, 200) + "...";
   };
-
-  const { status, data: session } = useSession();
-  const isAuthorized = status === "authenticated" && session.user.email === "hackr@hackr.sh";
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      window.location.href = "/";
-    }
-  }, [status]);
 
   return <>
     <main className="min-w-[80vw] flex flex-col gap-8">
