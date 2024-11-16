@@ -27,12 +27,14 @@ export default function NewBlog() {
   };
 
   const extractedTitle = async (data: PartialBlock[]) => {
+    if (document === undefined) return "";
     const span = document.createElement("span");
     span.innerHTML = await editor.blocksToFullHTML(data.slice(0, 1));
     return span.textContent ?? span.innerText;
   };
 
   const extractedBodySynopsis = async (data: PartialBlock[]) => {
+    if (document === undefined) return "";
     const span = document.createElement("span");
     span.innerHTML = await editor.blocksToFullHTML(data.slice(1, 2));
     return (span.textContent ?? span.innerText).substring(0, 200) + "...";
