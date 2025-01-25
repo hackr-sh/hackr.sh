@@ -1,5 +1,5 @@
 {
-  "buildCommand": "yarn build",
-  "devCommand": "yarn dev",
-  "installCommand": "yarn install"
+  "buildCommand": "bun build",
+  "devCommand": "bun dev",
+  "installCommand": "bun install"
 }

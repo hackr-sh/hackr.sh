@@ -1,7 +1,6 @@
 "use client";
 
 import { GithubIcon, Linkedin01Icon, TwitterIcon, Menu01Icon, Cancel01Icon, Home01Icon, NerdIcon, PencilEdit01Icon, PenTool03Icon } from "hugeicons-react";
-import Link from "next/link";
 import { useState } from "react";
 import BlurFade from "~/components/ui/blur-fade";
 import { Button } from "~/components/ui/button";
@@ -26,9 +25,9 @@ export const Navbar = () => {
           {links.map((link, i) => (
             <BlurFade key={link.name} delay={1 + i * 0.15}>
               <Button variant="ghost" asChild key={link.name}>
-                <Link href={link.href}>
+                <a href={link.href}>
                   {link.name}
-                </Link>
+                </a>
               </Button>
             </BlurFade>
           ))}
@@ -44,9 +43,9 @@ export const Navbar = () => {
           {externalLinks.map((link, i) => (
             <BlurFade key={link.href} delay={1.6 + i * 0.15}>
               <Button variant="ghost" asChild key={link.href}>
-                <Link href={link.href}>
+                <a href={link.href}>
                   {link.Icon}
-                </Link>
+                </a>
               </Button>
             </BlurFade>
           ))}
@@ -63,9 +62,9 @@ const NavOverlay = ({ links }: { links: Array<{ name: string, href: string }> })
       {links.map((link, i) => (
         <BlurFade key={link.name} delay={0.6 + i * 0.15}>
           <Button variant="ghost" asChild key={link.name}>
-            <Link className="text-xl" href={link.href}>
+            <a className="text-xl" href={link.href}>
               {link.name}
-            </Link>
+            </a>
           </Button>
         </BlurFade>
       ))}

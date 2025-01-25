@@ -1,0 +1,10 @@
+[tools]
+bun = "1.2"
+
+[tasks.dev]
+description = "Launch the development server"
+run = "bun dev"
+
+[tasks.prod]
+description = "Simulate production environment"
+run = "bun prod"

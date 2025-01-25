@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { cn } from "~/lib/utils";
+import { ProfilePicture } from "~/components/pfp";
+import BlurFade from "~/components/ui/blur-fade";
+import BlurIn from "~/components/ui/blur-in";
+import GridPattern from "~/components/ui/grid-pattern";
+import HyperText from "~/components/ui/hyper-text";
+import { BentoGridSection } from "~/components/bento-grid-section";
+---
+
+<Layout>
+	<main>
+		<GridPattern
+			client:load
+			strokeDasharray="4 2"
+			className={cn(
+				"[mask-image:radial-gradient(60vw_circle_at_center,white,transparent)]"
+			) + " fixed"}
+		/>
+		<div class="flex flex-row items-center justify-center gap-4">
+			<BlurFade client:load>
+				<ProfilePicture client:load />
+			</BlurFade>
+			<div>
+				<BlurFade client:load>
+					<HyperText
+						client:load
+						className="text-xl md:text-2xl lg:text-4xl font-bold"
+						text="Hey! I'm Mohammad Al-Ahdal"
+					/>
+				</BlurFade>
+				<BlurFade
+					client:load
+					delay={0.3}
+					className="text-slate-300 text-xs md:text-sm lg:text-base"
+				>
+					{
+						`I'm a software engineer with ${Math.floor((Date.now() - 1514764800000) / 1000 / 60 / 60 / 24 / 365.25)} years of experience, primarily in the fields of web and mobile development! I like messing around with new technologies and learning new things - almost to a fault.`
+					}
+				</BlurFade>
+				<BlurFade
+					client:load
+					delay={0.6}
+					className="text-slate-300 text-xs md:text-sm lg:text-base"
+				>
+					{"Here's a couple of things I'm currently working on:"}
+				</BlurFade>
+			</div>
+		</div>
+		<BentoGridSection client:load />
+		{/* Construction Sign */}
+		<BlurIn
+			client:load
+			className="flex flex-row items-center gap-2 fixed bottom-0 left-0 p-4 w-screen justify-center"
+			delay={3}
+			duration={0.3}
+		>
+			<span class="text-xs">🚧</span>
+			<span class="text-base font-mono"
+				>please mind the scaffolding, the website is still under construction</span
+			>
+			<span class="text-xs">🚧</span>
+		</BlurIn>
+	</main>
+</Layout>

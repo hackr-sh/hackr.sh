@@ -1,6 +1,4 @@
 "use client";
-
-import Image from "next/image";
 import { useState } from "react";
 
 export const ProfilePicture = () => {
@@ -22,8 +20,8 @@ export const ProfilePicture = () => {
       onMouseLeave={() => setIsHovered(false)}
     >
       {isHovered ?
-        <Image src="/emoji_pfp_hovered.png" alt="Emoji Profile Picture" width={150} height={150} objectFit="fit" /> :
-        <Image src="/emoji_pfp.png" alt="Emoji Profile Picture" width={150} height={150} objectFit="fit" />
+        <img src="/emoji_pfp_hovered.png" alt="Emoji Profile Picture" width={150} height={150} /> :
+        <img src="/emoji_pfp.png" alt="Emoji Profile Picture" width={150} height={150} />
       }
     </div>
   </>;
