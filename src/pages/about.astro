@@ -1,9 +1,35 @@
 ---
+import BlurFade from '~/components/ui/blur-fade';
+import HyperText from '~/components/ui/hyper-text';
+import { TextAnimate } from '~/components/ui/text-animate';
 import Layout from '~/layouts/Layout.astro';
 ---
 <Layout>
-  <main>
-    <h1 class="text-4xl font-bold">About</h1>
-    <p class="text-xl">This area is still under construction.</p>
+  <main class="">
+    <div class="flex flex-row items-center justify-center gap-4 m-4">
+      <TextAnimate
+      as="h1"
+      client:load
+      by="word"
+      animation="blurIn"
+      text="I'm Mohammad Al-Ahdal, a Software Engineer working remotely for DigitalHistory. I started coding back in 2011 when I was 13 years old." 
+      className="text-4xl font-bold w-[140%]"
+      />
+      <BlurFade client:load className="w-full">
+        <img src="/pfp.jpg" alt="Emoji Profile Picture" width={450} class="rounded-xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 ease-in-out" />
+      </BlurFade>
+    </div>
+    <BlurFade client:load className="w-full">
+      <br />
+      I now have over {Math.floor((Date.now() - 1514764800000) / 1000 / 60 / 60 / 24 / 365.25)} years of professional experience under my belt and I'm constantly learning new things.
+      I recently started getting into Astro (hence the website you're currently viewing), and I'm going to be using it for documentation for my future projects!
+      <br />
+      <br />
+      Apart from that, I've recently started working on learning game dev, and I've recently built a small path tracing renderer for a factory builder game idea I had in C#.
+      <br />
+      I also recently started contributing to the open-source community. I've contributed to a few projects small and large, and I'm always happy to help out!
+      <br />
+      If you're interested in reaching out for a collaboration, a job opportunity, or honestly anything else, check out <a href="/contact" class="text-slate-400 hover:text-slate-500 transition-all duration-300 ease-in-out">my contact page</a>!
+    </BlurFade>
   </main>
 </Layout>
