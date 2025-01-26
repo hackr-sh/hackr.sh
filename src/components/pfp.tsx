@@ -20,8 +20,8 @@ export const ProfilePicture = () => {
       onMouseLeave={() => setIsHovered(false)}
     >
       {isHovered ?
-        <img src="/emoji_pfp_hovered.png" alt="Emoji Profile Picture" width={150} height={150} /> :
-        <img src="/emoji_pfp.png" alt="Emoji Profile Picture" width={150} height={150} />
+        <img src="/emoji_pfp_hovered.png" alt="Emoji PFP" width={150} height={150} /> :
+        <img src="/emoji_pfp.png" alt="Emoji PFP" width={150} height={150} />
       }
     </div>
   </>;

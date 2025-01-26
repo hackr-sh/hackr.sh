@@ -24,7 +24,7 @@ export const Navbar = () => {
         <div className="lg:flex flex-row items-center gap-4 hidden">
           {links.map((link, i) => (
             <BlurFade key={link.name} delay={0 + i * 0.1}>
-              <Button variant="ghost" asChild key={link.name}>
+              <Button variant="ghost" asChild key={link.name} aria-label={`Link to ${link.name}`}>
                 <a href={link.href}>
                   {link.name}
                 </a>
@@ -43,7 +43,7 @@ export const Navbar = () => {
           {externalLinks.map((link, i) => (
             <BlurFade key={link.href} delay={0.5 + i * 0.1}>
               <Button variant="ghost" asChild key={link.href}>
-                <a href={link.href}>
+                <a href={link.href} aria-label={`Link to ${link.name}`}>
                   {link.Icon}
                 </a>
               </Button>
@@ -62,7 +62,7 @@ const NavOverlay = ({ links }: { links: Array<{ name: string, href: string }> })
       {links.map((link, i) => (
         <BlurFade key={link.name} delay={i * 0.1}>
           <Button variant="ghost" asChild key={link.name}>
-            <a className="text-xl" href={link.href}>
+            <a className="text-xl" href={link.href} aria-label={`Link to ${link.name}`}>
               {link.name}
             </a>
           </Button>
