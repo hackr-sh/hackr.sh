@@ -1,9 +1,50 @@
 ---
+import { GithubIcon, Linkedin01Icon, TwitterIcon } from 'hugeicons-react';
+import { MailIcon } from 'lucide-react';
+import BlurFade from '~/components/ui/blur-fade';
+import { BorderBeam } from '~/components/ui/border-beam';
+import { Button } from '~/components/ui/button';
 import Layout from '~/layouts/Layout.astro';
 ---
 <Layout>
-  <main>
-    <h1 class="text-4xl font-bold">Contact</h1>
-    <p class="text-xl">This area is still under construction.</p>
+  <main class="w-full overflow-clip">
+    <BlurFade client:load className="text-center text-4xl text-slate-400 z-10">
+      <h1 class="text-4xl font-bold">Get in touch with me!</h1>
+    </BlurFade>
+    <BlurFade client:load delay={0.2} className="text-xl text-slate-400 z-10 mt-10">
+      <div class="relative p-4 flex flex-col items-start justify-start gap-4 rounded-2xl shadow-xl w-full border-slate-600 border"> 
+        <BorderBeam client:load className="rounded-2xl" /> 
+        <div class="flex flex-col items-start justify-start gap-4">
+          <h2 class="text-2xl font-bold mx-3">Contact me</h2>
+          <p class="text-slate-500 text-sm mx-3">
+            I'm always happy to talk to you about anything - from software engineering to anything else!
+          </p>
+          <a class="flex-row flex justify-center items-center gap-2" href="mailto:me@hackr.sh">
+            <Button variant="ghost">
+              <MailIcon className="h-6 w-6" />
+              <span>me at hackr.sh</span>
+            </Button>
+          </a>
+          <a class="flex-row flex justify-center items-center gap-2" href="https://github.com/m-ahdal" target="_blank">
+            <Button variant="ghost">
+              <GithubIcon className="h-6 w-6" />
+              <span>m-ahdal on GitHub</span>
+            </Button>
+          </a>
+          <a class="flex-row flex justify-center items-center gap-2" href="https://www.linkedin.com/in/mohammadalahdal/" target="_blank">
+            <Button variant="ghost">
+              <Linkedin01Icon className="h-6 w-6" />
+              <span>Mohammad Al-Ahdal on LinkedIn</span>
+            </Button>
+          </a>
+          <a class="flex-row flex justify-center items-center gap-2" href="https://twitter.com/0xh4ckr" target="_blank">
+            <Button variant="ghost">
+              <TwitterIcon className="h-6 w-6" />
+              <span>0xh4ckr on Twitter</span>
+            </Button>
+          </a>
+        </div>
+      </div>
+    </BlurFade>
   </main>
 </Layout>

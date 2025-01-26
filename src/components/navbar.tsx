@@ -12,7 +12,7 @@ export const links = [
   { Icon: <PenTool03Icon />, href: "/blog", name: "Blog" },
 ];
 export const externalLinks = [
-  { Icon: <GithubIcon />, href: "https://github.com/hackrmomo", name: "GitHub" },
+  { Icon: <GithubIcon />, href: "https://github.com/m-ahdal", name: "GitHub" },
   { Icon: <Linkedin01Icon />, href: "https://www.linkedin.com/in/mohammadalahdal/", name: "LinkedIn" },
   { Icon: <TwitterIcon />, href: "https://twitter.com/0xh4ckr", name: "Twitter" },
 ];
@@ -23,7 +23,7 @@ export const Navbar = () => {
       <div className="relative flex flex-row items-center justify-between p-4 gradient-blur backdrop-blur-lg pb-20">
         <div className="lg:flex flex-row items-center gap-4 hidden">
           {links.map((link, i) => (
-            <BlurFade key={link.name} delay={1 + i * 0.15}>
+            <BlurFade key={link.name} delay={0 + i * 0.1}>
               <Button variant="ghost" asChild key={link.name}>
                 <a href={link.href}>
                   {link.name}
@@ -33,7 +33,7 @@ export const Navbar = () => {
           ))}
         </div>
         <div className="flex flex-row items-center gap-4 lg:hidden">
-          <BlurFade delay={1.0}>
+          <BlurFade>
             <Button onClick={() => setIsOpen(!isOpen)} variant="ghost">
               {isOpen ? <Cancel01Icon /> : <Menu01Icon />}
             </Button>
@@ -41,7 +41,7 @@ export const Navbar = () => {
         </div>
         <div className="flex flex-row items-center gap-4">
           {externalLinks.map((link, i) => (
-            <BlurFade key={link.href} delay={1.6 + i * 0.15}>
+            <BlurFade key={link.href} delay={0.5 + i * 0.1}>
               <Button variant="ghost" asChild key={link.href}>
                 <a href={link.href}>
                   {link.Icon}
@@ -60,7 +60,7 @@ const NavOverlay = ({ links }: { links: Array<{ name: string, href: string }> })
   return <>
     <BlurFade className="fixed top-0 left-0 w-screen h-screen bg-black/50 backdrop-blur-lg z-40 p-8 flex flex-col items-center justify-center gap-4">
       {links.map((link, i) => (
-        <BlurFade key={link.name} delay={0.6 + i * 0.15}>
+        <BlurFade key={link.name} delay={i * 0.1}>
           <Button variant="ghost" asChild key={link.name}>
             <a className="text-xl" href={link.href}>
               {link.name}
