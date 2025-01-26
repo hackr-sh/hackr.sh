@@ -49,18 +49,5 @@ import { BentoGridSection } from "~/components/bento-grid-section";
 			</div>
 		</div>
 		<BentoGridSection client:load />
-		{/* Construction Sign */}
-		<BlurIn
-			client:load
-			className="flex flex-row items-center gap-2 fixed bottom-0 left-0 p-4 w-screen justify-center"
-			delay={3}
-			duration={0.3}
-		>
-			<span class="text-xs">🚧</span>
-			<span class="text-base font-mono"
-				>please mind the scaffolding, the website is still under construction</span
-			>
-			<span class="text-xs">🚧</span>
-		</BlurIn>
 	</main>
 </Layout>
