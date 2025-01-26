@@ -8,7 +8,7 @@ export const BentoGridSection = () => {
   return <BentoGrid className="mt-8">
     <BentoCard
       Icon={DashboardSquare03Icon}
-      href="https://github.com/hackrmomo/hyprmac"
+      href="https://github.com/m-ahdal/hyprmac"
       name="HyprMac"
       cta="GitHub"
       background={<>
@@ -19,7 +19,7 @@ export const BentoGridSection = () => {
     />
     <BentoCard
       Icon={KeyboardIcon}
-      href="https://github.com/hackrmomo/clackr"
+      href="https://github.com/m-ahdal/clackr"
       name="Clackr"
       cta="GitHub"
       background={<>
@@ -41,7 +41,7 @@ export const BentoGridSection = () => {
     />
     <BentoCard
       Icon={StackIcon}
-      href="https://github.com/hackrmomo/stackybar"
+      href="https://github.com/m-ahdal/stackybar"
       name="StackyBar"
       cta="GitHub"
       background={<>
