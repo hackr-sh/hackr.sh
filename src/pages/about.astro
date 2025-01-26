@@ -1,11 +1,15 @@
 ---
 import BlurFade from '~/components/ui/blur-fade';
-import HyperText from '~/components/ui/hyper-text';
+import { Ripple } from '~/components/ui/ripple';
 import { TextAnimate } from '~/components/ui/text-animate';
 import Layout from '~/layouts/Layout.astro';
 ---
 <Layout>
-  <main class="">
+  <main>
+    <Ripple
+      mainCircleOpacity={0.175}
+      client:load
+    />
     <div class="flex flex-row items-center justify-center gap-4 m-4">
       <TextAnimate
       as="h1"
