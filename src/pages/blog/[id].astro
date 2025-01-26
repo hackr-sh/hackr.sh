@@ -1,0 +1,24 @@
+---
+import { getEntry, render, getCollection } from 'astro:content';
+import Layout from '~/layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const blogs = await getCollection('blogs');
+  return blogs.map((blog) => ({ params: { id: blog.id } }));
+}
+
+const { id } = Astro.params;
+const blog = await getEntry('blogs', id);
+if (!blog) {
+  return new Response(null, {
+    status: 404,
+    headers: { 'content-type': 'text/plain' },
+  });
+}
+const { Content } = await render(blog);
+---
+<Layout>
+  <main>
+    <Content />
+  </main>
+</Layout>

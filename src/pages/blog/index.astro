@@ -1,0 +1,32 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import HyperText from '~/components/ui/hyper-text';
+import { FlickeringGrid } from '~/components/ui/flickering-grid';
+
+const blogs = await getCollection('blogs');
+---
+<Layout>
+  <main>
+    <HyperText text="hackr's little ramblings" client:load className="text-center text-4xl text-slate-400 z-10" />
+    <div class="flex flex-col gap-4 w-full mt-16 z-10">
+      {blogs.map((blog) => (
+        <a 
+          href={`/blog/${blog.id}`}
+          class="flex flex-col gap-4 p-4 rounded-lg shadow-md bg-slate-800 relative w-full border border-slate-700 transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+          <h2 class="text-2xl text-slate-300">{blog.data.title}</h2>
+          <p class="text-slate-500">{blog.data.description}</p>
+          <FlickeringGrid
+            client:load
+            className="absolute top-0 left-0 w-full h-full inset-0 z-0 [mask-image:radial-gradient(20vw_circle_at_center,white,transparent)]"
+            gridGap={2}
+            squareSize={2}
+            color="#3399cc"
+            flickerChance={0.6}
+            maxOpacity={0.3}
+          />
+        </a>
+      ))}
+    </div>
+  </main>
+</Layout>

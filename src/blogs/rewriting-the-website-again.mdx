@@ -1,0 +1,106 @@
+---
+title: Rewriting the website
+description: (for what feels like the 1000th time)
+date: 2025-01-26
+---
+import HyperText from "~/components/ui/hyper-text";
+
+# <HyperText text="Rewriting the website" client:load className="text-center text-4xl text-slate-400 z-10" />
+<HyperText text="(for what feels like the 1000th time)" client:load className="text-center text-lg text-slate-400 z-10" />
+<div className="text-left w-full">
+  <br />
+  Having a portfolio website is pretty important for a software engineer.
+  It helps showcase your skills, and it's a great way to get noticed by potential employers. 
+  It also teaches you a lot about deployment, hosting, CI/CD, and more, which are often seen 
+  as crucial skills for someone looking into working as a Software Engineer (especially 
+  those working on websites like yours truly).
+  <br />
+  As a software engineer, you typically have to constantly be learning new things. And this is
+  where the website rewrites come in for me. The website rewrites come in typically once I've
+  learned something new (such as a new framework, a new language, or a new tool), or when I've
+  made a mistake in a framework or tool that was used to build the website, or when I've
+  decided to learn something new on the promise of a framework or tool.
+  <br />
+</div>
+## <HyperText text="Why?" client:load className="text-center text-2xl text-slate-400 z-10" />
+<div className="text-left w-full">
+  <br />
+  The reason I'm rewriting the website is because I've learned a lot over the past year, and I
+  also wanted to give a shot at writing the website using Astro. I haven't touched Astro in
+  any professional capacity before, and I'm still learning the ropes but with the Astro 5.0
+  release, it's got a lot of potential packed into it that would be great to explore.
+  <br />
+  So, yeah, this is basically a "I'm learning something new" website. I've been making websites
+  for a long time, (I started building them back in 2013 for my robotics team), and I've learned
+  and grown so much since I first started.
+  <br />
+</div>
+## <HyperText text="The start - and why it wasn't sustainable" client:load className="text-center text-2xl text-slate-400 z-10" />
+<div className="text-left w-full">
+  <br />
+  The very first website I made was a simple website built using HTML and CSS (there was javascript
+  too, but I had no idea how to use it so it consisted of a ton of copy-pasted code). It was a hodgepodge
+  of various paralax scrolling effects, highly-unoptimized images, and absolutely atrocious coding practices.
+  <br />
+  It was deployed using cPanel, and it was an absolute pain to maintain. By the end of the lifetime of
+  the website, I was basically a professional at SFTPing files around and manually updating the website
+  (all without git - imagine that!). There was no CI/CD, no versioning, and no automatic deployments. We can
+  forget about having a database at all too.
+  <br />
+  Whenever it needed to be updated, I would have to manually update the website (and seeing as I didn't know
+  javascript that well, each update would take <i>forever</i>). The amount of friction involved almost completely
+  detracted me from ever pursuing a career in any form of software engineering.
+  <br />
+</div>
+## <HyperText text="The history" client:load className="text-center text-2xl text-slate-400 z-10" />
+<div className="text-left w-full">
+  <br />
+  Following that trainwreck of a website, I pivoted and decided to use a framework that allowed me to
+  reference blocks of code so that they could automatically be added to a given page. I chose to use
+  EJS (Embedded Javascript) for the templating engine and I learned a lot. With that iteration, I was
+  back to being hooked on software engineering. EJS allowed me to write clean, maintainable code that
+  was easy to read and understand. I still didn't have a good grasp on javascript or CI/CD, or had a
+  better development experience than I had before, but it was a start.
+  <br />
+  I then decided to rewrite the website again, but this time using React. I learned about React during
+  a hackathon and it seemed easy enough to use at the time (If only I knew how deep the React rabbit hole
+  went). I was hooked on React and I was excited to see what it could do. This is where a lot of my growth
+  in the field of website development (and software engineering in general) started. I started using
+  databases, I got better writing CSS, started using git, was able to setup a rather crude CI/CD pipeline,
+  and learned about testing frameworks like Jest. I also started learning about server-side rendering (SSR)
+  and how it could be used to improve the performance of my website. This is where I started to see the
+  power of React and how it could be used to build complex web applications.
+  <br />
+  My most recent rewrite (excluding this one) was last year. The design of the website was completely 
+  overhauled (it looks the same as the current version), and it was built using Next.js (primarily 
+  because of the amazing Image optimizations and the fact that I was deploying to Vercel anyways). 
+  We had a database, proper CI/CD, clean code with good coding practices in general. We were using
+  Tailwind CSS for styling - it was a beautiful experience to work with. So - why the rewrite?
+  <br />
+</div>
+## <HyperText text="The rewrite (and why I'll probably rewrite it again)" client:load className="text-center text-2xl text-slate-400 z-10" />
+<div className="text-left w-full">
+  <br />
+  Well because although setting up a website with authentication, database (connected via the Prisma ORM),
+  and tRPC was a lot of fun, it wasn't sustainable. People could feel a certain lagginess on various pages since
+  data retrieval wasn't instantaneous and it also used too many resources for what it was - a portfolio website.
+  <br />
+  I'm not saying that the rewrite was a bad experience, but it wasn't sustainable.
+  <br />
+  This "final" rewrite was chosen because of the promises of Astro. Having islands of code that can be from
+  any major framework (React, Vue, Svelte, etc.) was a huge plus. I was able to use the Astro 5.0 release
+  to build a website that was much more maintainable and performant than the previous website. This blogpost, 
+  for example, is simply an MDX file that is converted to HTML using Astro.
+  <br />
+  I also got to keep a ton of my old components and hooks that only worked in React/Next.js. I was able to
+  use them in Astro and they worked perfectly. I also got to keep my old styles and images, the routing system
+  hasn't changed much, and I no longer had to worry about the database since I can manually specify collections
+  and a given collection's properties.
+  <br />
+  This likely won't be the last rewrite, so I'm excited to see what the future holds. I've had a blast working
+  with Astro, and the more likely scenario is that there probably won't be a massive overhaul but as of writing
+  this, tailwind v4.0 just released and I'm sure it'll be a good reason to rewrite the website again. As the world
+  of software engineering continues to evolve, better tools and frameworks will be developed that will prompt more
+  and more changes and so, the personal portfolio is never truly "done", but I do feel like it's a good place to be
+  for now.
+</div>
