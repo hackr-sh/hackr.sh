@@ -12,7 +12,7 @@ export const links = [
   { Icon: <PenTool03Icon />, href: "/blog", name: "Blog" },
 ];
 export const externalLinks = [
-  { Icon: <GithubIcon />, href: "https://github.com/m-ahdal", name: "GitHub" },
+  { Icon: <GithubIcon />, href: "https://github.com/hackr-sh", name: "GitHub" },
   { Icon: <Linkedin01Icon />, href: "https://www.linkedin.com/in/mohammadalahdal/", name: "LinkedIn" },
   { Icon: <TwitterIcon />, href: "https://twitter.com/0xh4ckr", name: "Twitter" },
 ];
