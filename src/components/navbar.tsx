@@ -1,6 +1,6 @@
 "use client";
 
-import { GithubIcon, Linkedin01Icon, TwitterIcon, Menu01Icon, Cancel01Icon, Home01Icon, NerdIcon, PencilEdit01Icon, PenTool03Icon } from "hugeicons-react";
+import { GithubIcon, Linkedin01Icon, TwitterIcon, Menu01Icon, Cancel01Icon, Home01Icon, NerdIcon, PencilEdit01Icon, PenTool03Icon, File01Icon } from "hugeicons-react"; 
 import { useState } from "react";
 import BlurFade from "~/components/ui/blur-fade";
 import { Button } from "~/components/ui/button";
@@ -10,6 +10,7 @@ export const links = [
   { Icon: <NerdIcon />, href: "/about", name: "About" },
   { Icon: <PencilEdit01Icon />, href: "/contact", name: "Contact" },
   { Icon: <PenTool03Icon />, href: "/blog", name: "Blog" },
+  { Icon: <File01Icon />, href: "/Mohammad Al-Ahdal Resume 2025.pdf", name: "Resume" },
 ];
 export const externalLinks = [
   { Icon: <GithubIcon />, href: "https://github.com/hackr-sh", name: "GitHub" },
